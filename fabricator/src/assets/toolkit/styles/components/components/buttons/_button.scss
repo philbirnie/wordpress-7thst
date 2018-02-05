@@ -1,0 +1,37 @@
+/**
+ * Buttons
+ */
+
+.c-btn {
+    @include reset-button();
+    display: inline-block;
+    min-width: em(160px);
+    padding: 1.188em 1.25em 1.125em;
+    border: 1px solid $color-black;
+    border-radius: 0;
+    color: $color-btn;
+    font-size: 1rem;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    @include focus-button();
+    @include font();
+    @include transition-button-hover();
+
+    &:active, &:hover {
+        background-color: $color-black;
+        color: $color-white;
+    }
+
+    &--alt {
+        border-color: $color-white;
+        color: $color-white;
+
+        &:active, &:hover {
+            background-color: $color-white;
+            color: $color-black;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+/**
+ * Text Component
+ */
+
+.c-text-headline {
+    font-size: rem(25px);
+    line-height: 1.3;
+    @include font();
+
+    @include mq(width-md) {
+        font-size: rem(36px);
+    }
+}
+
+.c-text-lead {
+    &, p {
+        font-size: rem($lead-font-size);
+    }
+}
+
+.c-text-body {
+    font-size: 1rem;
+    line-height: $base-line-height;
+}
+
+.c-text-smallprint {
+    font-size: em($xsm-font-size);
+}
+
+.c-text-underline {
+    text-decoration: underline;
+}
+
+.c-text-uppercase {
+    text-transform: uppercase;
+}

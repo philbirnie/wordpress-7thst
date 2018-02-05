@@ -1,0 +1,27 @@
+/**
+ * Links
+ */
+
+// All anchors without a classname
+a:not([class]) {
+    color: $color-btn;
+    cursor: pointer;
+    @include font('bold');
+
+    &:active, &:hover,
+    &:visited:active, &:visited:hover {
+        color: darken($color-btn, 20%);
+    }
+
+    &:visited {
+        color: darken($color-btn, 10%);
+    }
+}
+
+// Phone links
+a[href^='tel:'] {
+    &, &:visited {
+        color: currentColor;
+        text-decoration: none;
+    }
+}

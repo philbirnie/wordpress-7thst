@@ -1,0 +1,192 @@
+/**
+ * Utility Classes
+ */
+
+/* Text */
+.u-font-size-base {
+    font-size: 1em;
+}
+
+.u-font-size-sm {
+    font-size: $sm-font-size;
+}
+
+.u-font-size-xsm {
+    font-size: $xsm-font-size;
+}
+
+.u-font-plain {
+    @include font();
+}
+
+.u-text-align-center {
+    text-align: center;
+}
+
+.u-text-align-right {
+    text-align: right;
+}
+
+.u-text-align-left {
+    text-align: left;
+}
+
+.u-text-align-justify {
+    text-align: justify;
+}
+
+.u-text-bold {
+    font-weight: bold !important;
+}
+
+.u-letter-spacing-none {
+    letter-spacing: 0;
+}
+
+.u-uppercase {
+    text-transform: uppercase !important;
+}
+
+
+/* Borders */
+
+.u-border-none {
+    border: 0;
+}
+
+
+/* Layout */
+
+// Margins
+.u-margin-none {
+    margin: 0 !important;
+}
+
+.u-margin-top {
+    margin-top: rem($base-spacing-unit);
+}
+
+.u-margin-top-2x {
+    margin-top: rem($base-spacing-unit * 2);
+}
+
+.u-margin-top-2x\@lg {
+    @include mq(width-lg) {
+        margin-top: rem($base-spacing-unit * 2);
+    }
+}
+
+.u-margin-top-4x\@lg {
+    @include mq(width-lg) {
+        margin-top: rem($base-spacing-unit * 4);
+    }
+}
+
+.u-margin-top-pull {
+    margin-top: rem(-$base-spacing-unit);
+}
+
+.u-margin-top-pull-2x\@lg {
+    @include mq(width-lg) {
+        margin-top: rem(-$base-spacing-unit * 2);
+    }
+}
+
+.u-margin-bottom-1\/2 {
+    margin-bottom: rem($base-spacing-unit / 2);
+}
+
+.u-margin-bottom {
+    margin-bottom: rem($base-spacing-unit);
+}
+
+.u-margin-bottom-2x {
+    margin-bottom: rem($base-spacing-unit * 2);
+}
+
+.u-margin-bottom-2x\@lg {
+    @include mq(width-lg) {
+        margin-bottom: rem($base-spacing-unit * 2);
+    }
+}
+
+.u-margin-bottom-4x {
+    margin-bottom: rem($base-spacing-unit * 4);
+}
+
+.u-margin-bottom-4x\@lg {
+    @include mq(width-lg) {
+        margin-bottom: rem($base-spacing-unit * 4);
+    }
+}
+
+.u-margin-bottom-pull {
+    margin-bottom: rem(-$base-spacing-unit);
+}
+
+.u-margin-bottom-pull-2x\@lg {
+    @include mq(width-lg) {
+        margin-bottom: rem(-$base-spacing-unit * 2);
+    }
+}
+
+.u-margin-bottom-none {
+    margin-bottom: 0;
+}
+
+.u-margin-left-1\/2 {
+    margin-left: rem($base-spacing-unit / 2)
+}
+
+// Padding
+.u-padding-bottom-none {
+    padding-bottom: 0;
+}
+
+/* Layout / Positioning */
+.u-float-right {
+    float: right !important;
+}
+
+/* Visibility */
+
+// Visually hidden
+.u-visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    border: 0;
+    overflow: hidden;
+}
+
+// Hidden
+.u-hidden {
+    display: none;
+}
+
+// Hide on large screens
+.u-hidden\@lg,
+.u-hidden-lg {
+    @include mq(width-lg) {
+        display: none !important;
+    }
+}
+
+.u-hidden\@sm-lg,
+.u-hidden-sm-lg {
+    @include mq(0px, width-lg) {
+        display: none;
+    }
+}
+
+// Show only on large screens;
+.u-visible-lg {
+    display: none !important;
+
+    @include mq(width-lg) {
+        display: block !important;
+    }
+}

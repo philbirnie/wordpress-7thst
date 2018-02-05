@@ -1,0 +1,13 @@
+/**
+ * Paragraphs
+ */
+
+p {
+    margin-top: 0;
+    margin-bottom: em($base-spacing-unit / 2);
+    line-height: $text-block-line-height;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

@@ -1,0 +1,22 @@
+/**
+ * Fonts
+ */
+
+// Default - Sans
+@mixin font($weight: 'light') {
+    font-family: sans-serif;
+
+    @if $weight == 'light' {
+        font-weight: 300;
+    } @else if $weight == 'bold' {
+        font-weight: 600;
+    } @else {
+        @warn 'Weight not available for this font.';
+        @error 'Weight not available for this font.';
+    }
+}
+
+// Serif
+@mixin font-serif() {
+    font-family: Garamond, 'Times New Roman', serif;
+}

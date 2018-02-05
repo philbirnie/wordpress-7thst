@@ -1,0 +1,160 @@
+/**
+ * Main Navigation
+ */
+
+$c-nav-main-btn-padding-m: $gutter-width-m;
+$c-nav-main-btn-padding: 1.638em;
+
+.c-nav-main {
+    $self: &;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    height: auto;
+
+    @include mq(width-lg) {
+        width: auto;
+        height: auto;
+    }
+
+    &__list {
+        display: block;
+        margin: 0;
+        padding-top: rem($base-spacing-unit * 1.5);
+        padding-right: 0;
+        padding-bottom: rem($base-spacing-unit / 2);
+        padding-left: 0;
+
+        @include mq(width-sm) {
+            padding-top: rem($base-spacing-unit * 1.75);
+        }
+
+        @include mq(width-lg) {
+            display: flex;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    &__item {
+        display: block;
+        color: $color-white;
+
+        @include mq(width-lg) {
+            display: inline-block;
+            transition: color $transition-menu-dark;
+
+            &.menu-item-has-children:hover > .c-nav-main__sub {
+                transform: translateX(1%);
+            }
+        }
+    }
+
+    &__btn {
+        display: block;
+        padding: rem($base-spacing-unit / 3) rem($c-nav-main-btn-padding-m);
+        font-size: em($sm-font-size, $sm-font-size);
+        letter-spacing: $heading-letter-spacing;
+        text-align: left;
+        text-transform: uppercase;
+
+        .menu-item-has-children & {
+            display: none;
+        }
+
+        @include mq(width-sm) {
+            padding: rem($base-spacing-unit / 2) rem($base-spacing-unit);
+            font-size: em($base-font-size, $sm-font-size);
+        }
+
+        @include mq($until: width-landscape-max, $and: '(orientation: landscape)') {
+            padding: rem($base-spacing-unit / 3) rem($c-nav-main-btn-padding-m);
+            font-size: em($sm-font-size, $sm-font-size);
+        }
+
+        @include mq(width-md) {
+            padding: rem(30px) rem($base-spacing-unit * 2);
+            font-size: em(24px);
+        }
+
+        @include mq(width-lg) {
+            padding: 1.75em $c-nav-main-btn-padding-m;
+            font-size: em($sm-font-size);
+            letter-spacing: 0.25em;
+            text-align: center;
+            @include transition-nav-hover();            
+
+            .c-nav-main__item:first-child & {
+                padding-left: $c-nav-main-btn-padding-m * 2;
+            }
+    
+            .c-nav-main__item:last-child & {
+                padding-right: $c-nav-main-btn-padding-m * 2;
+            }
+
+            .menu-item-has-children & {
+                display: block;
+
+                &:after {
+                    display: inline-block;
+                    position: relative;
+                    top: -1px;
+                    right: -4px;
+                    content: '';
+                    @include chevron(6px, 2px, currentColor, 'down');
+                }
+            }    
+
+            #{$self}__item:active &,
+            #{$self}__item:hover & {
+                transform: scale(1.05);
+                text-decoration: none;
+            }
+        }
+
+        @include mq(width-lg) {
+            padding: 1.75em $c-nav-main-btn-padding;
+            font-size: em($base-font-size);
+            
+            .c-nav-main__item:first-child & {
+                padding-left: $c-nav-main-btn-padding * 1.75;
+            }
+    
+            .c-nav-main__item:last-child & {
+                padding-right: $c-nav-main-btn-padding * 1.75;
+            }
+        }
+    }
+
+    // Mobile button
+    &__nav-mobile {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        @include mq(width-lg) {
+            display: none;
+        }
+    }
+
+    // Sub nav
+    &__sub {
+        @include mq(width-lg) {
+            display: block;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            transform: translateX(110%);
+            transition: transform 0.75s ease-in-out;
+        }
+    }
+}
+
+// When menu is dark
+.menu-is-dark {
+    @include mq(width-lg) {
+        .c-nav-main__item {
+            color: $color-black;
+        }
+    }
+}

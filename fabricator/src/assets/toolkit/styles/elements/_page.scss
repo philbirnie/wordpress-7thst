@@ -1,0 +1,33 @@
+/**
+ * Base Styles
+ */
+
+@viewport {
+    width: device-width;
+}
+
+::selection {
+    background-color: lightblue;
+    text-shadow: 1px 1px #d3d3d3;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+html {
+    color: $color-base;
+    font-size: ($base-font-size / 16px) * 1em;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    @include font();
+    @include crisp-text();
+}
+
+body {
+    position: relative;
+
+    @include mq(width-lg) {
+        padding-top: 0;
+    }
+}

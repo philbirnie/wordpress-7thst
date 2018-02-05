@@ -1,0 +1,38 @@
+@charset 'UTF-8';
+
+
+@import 'settings/vars';
+@import 'settings/breakpoints';
+@import 'settings/colors';
+@import 'settings/fonts';
+
+@import 'sass-mq/mq';
+@import 'supercell/tools.widths';
+@import 'tools/functions/em';
+@import 'tools/functions/map-getters';
+@import 'tools/mixins/focus';
+@import 'tools/mixins/reset';
+@import 'tools/mixins/text-helpers';
+
+@import 'generic/transitions';
+
+@import 'elements/lists';
+@import 'elements/paragraphs';
+
+@import 'components/components/buttons/button';
+@import 'components/components/headings';
+@import 'components/components/horizontal-rule';
+@import 'components/components/lists';
+@import 'components/components/typography';
+
+@import 'utilities/utilities';
+
+
+body#tinymce.wp-editor {
+    color: $color-base;
+    font-size: ($base-font-size / 16px) * 1em;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    @include font();
+    // @include crisp-text();
+}

@@ -1,0 +1,50 @@
+/**
+ * Slash shapes
+ * 
+ * @param   bool            $vert       false   Produces a vertical version of the slash
+ * @param   bool            $invert     false   Creates flips the slash on the X axis (mirroring it)
+ * @param   bool            $thin       false   Creates a skinnier version
+ * @param   measurement     $length     64px    Determines length of the slash
+ */
+
+@mixin slash($vert: false, $invert: false, $thin: false, $length: 64px) {
+    $direction: to right;
+    $thickness: 4px;
+    $rotate: scale(1);
+
+    // Skinny
+    @if $thin {
+        $thickness: 3px;
+    }
+
+    // Mirror
+    @if $invert == true {
+        $rotate: scale(-1);
+    }
+
+    display: block;
+
+    // Direction
+    @if $vert == true {
+        $direction: to bottom;
+        width: $thickness;
+        height: $length;
+        transform: skewY($global-skew-angle) $rotate;
+    } @else {
+        width: $length;
+        height: $thickness;
+        transform: skewX(-$global-skew-angle) $rotate;
+    }
+    /* stylelint-disable */
+    background-image: linear-gradient($direction, 
+        $color-blue-light 0, 
+        $color-blue-light 65.5%, 
+        $color-blue-dark 65.5%, 
+        $color-blue-dark 75%, 
+        $color-red 75%,
+        $color-red 100%
+    );
+    /* stylelint-enable */
+
+    content: '';
+}

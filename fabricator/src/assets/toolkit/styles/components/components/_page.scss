@@ -1,0 +1,12 @@
+/**
+ * Page Component
+ */
+
+.c-page {
+    margin-top: em($head-height-m);
+    @include transition-menu-toggle();
+
+    @include mq(width-lg) {
+        margin-top: 0;
+    }
+}

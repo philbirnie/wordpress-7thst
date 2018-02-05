@@ -1,0 +1,30 @@
+# Wordpress
+/cms/*
+!/cms/wp-content
+/cms/wp-content/*
+!/cms/wp-content/themes
+/cms/wp-content/themes/*
+!/cms/wp-content/themes/mytheme
+
+# Plugins
+!/cms/wp-content/mu-plugins
+!/cms/wp-content/plugins
+/cms/wp-content/plugins/*
+
+# Add exceptions (plugins that should be tracked) here.
+
+
+# Docker
+.data
+
+# Fabricator
+fabricator/node_modules
+fabricator/dist
+fabricator/.sass-cache
+
+# Misc.
+.DS_Store
+
+# Jetbrains
+.idea/workspace.xml
+.idea/tasks.xml

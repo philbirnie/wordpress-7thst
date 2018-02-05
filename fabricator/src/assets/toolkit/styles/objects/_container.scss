@@ -1,0 +1,30 @@
+/**
+ * Container
+ */
+
+.o-container {
+    width: 100%;
+    max-width: em($content-max-width-m);
+    margin: 0 auto;
+    padding: 0 em($gutter-width-m);
+
+    // Removes max width on small screens
+    &--no-max\@md {
+        max-width: em($content-max-width);
+    }
+
+    @include mq(width-lg) {
+        max-width: em($content-max-width);
+        padding: 0 em($gutter-width);
+
+        // Wide width
+        &--wide {
+            max-width: em($content-wide-width);
+        }
+    }
+
+    &--flush {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}

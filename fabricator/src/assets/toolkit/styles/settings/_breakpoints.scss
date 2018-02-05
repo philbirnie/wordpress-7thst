@@ -1,0 +1,14 @@
+/**
+ * Breakpoints
+ */
+
+$mq-breakpoints: (
+    width-sm: 375px,
+    width-sm-only: 767px,
+    width-md: 768px,
+    width-landscape-max: 1023px,
+    width-lg: 1024px,
+    width-lg-only: 1025px,
+    width-xl: 1200px,
+    width-full: 1920px
+);

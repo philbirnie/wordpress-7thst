@@ -1,0 +1,21 @@
+/**
+ * Menu button
+ */
+
+.c-btn-menu {
+    $self: &;
+    @include reset-button();
+    padding: 0.5rem 0.25rem;
+    color: $color-btn;
+    @include focus-button();
+
+    &__icon {
+        @include burger(18px, 1px, 5px, $color-white, 0, 0);
+    }
+
+    &--close {
+        #{$self}__icon {
+            @include burger-to-cross();
+        }
+    }
+}

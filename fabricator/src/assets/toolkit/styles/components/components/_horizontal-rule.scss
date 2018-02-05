@@ -1,0 +1,12 @@
+/**
+ * Horizontal Rules
+ */
+
+.c-hrule {
+    border: 0;
+    border-top: 1px solid $color-border;
+
+    &--alt {
+        border-color: $color-border-alt;
+    }
+}

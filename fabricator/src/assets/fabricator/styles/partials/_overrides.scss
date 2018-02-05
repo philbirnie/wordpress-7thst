@@ -1,0 +1,13 @@
+/**
+ * Fabricator overrides
+ */
+
+.f-body {
+    background-color: #efefef;
+}
+
+.f-menu {
+    a:not([class]) {
+        font-weight: normal !important;
+    }
+}

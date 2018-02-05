@@ -1,0 +1,19 @@
+/**
+ * Images
+ */
+
+.c-image {
+
+    &--lazy {
+        opacity: 0;
+        transition: opacity 500ms ease-in;
+
+        &.is-loaded {
+            opacity: 1;
+        }
+    }
+
+    &--inline-block {
+        display: inline-block;
+    }
+}

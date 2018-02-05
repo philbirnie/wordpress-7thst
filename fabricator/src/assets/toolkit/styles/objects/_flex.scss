@@ -1,0 +1,68 @@
+/**
+ * Flex
+ */
+
+.o-flex {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include mq(width-lg) {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    &--nowrap\@lg {
+        @include mq(width-lg) {
+            flex-wrap: nowrap;
+        }
+    }
+}
+
+.o-flex__item {
+    display: flex;
+    position: relative;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 1;
+    justify-content: top;
+    margin: 0;
+    padding: 0;
+}
+
+// Bordered variant
+.o-flex--bordered {
+    .o-flex__item {
+        & + .o-flex__item {
+            border-top: 1px solid $color-white;
+
+            @include mq(width-lg) {
+                border-top: none;
+                border-left: 1px solid $color-white;
+            }
+        }
+    }
+}
+
+// Reverse children
+.o-flex--reverse\@mobile-tablet-only {
+    @include mq($from: 0px, $until: width-landscape-max) {
+        flex-direction: column-reverse;
+        align-items: center;
+
+        > .o-flex__item {
+            width: 100%;
+
+            & + .o-flex__item {
+                margin-bottom: rem($base-spacing-unit);
+            }
+        }
+    }
+}

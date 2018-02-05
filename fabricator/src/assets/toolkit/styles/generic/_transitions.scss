@@ -1,0 +1,45 @@
+/**
+ * Transitions
+ */
+
+$menu-open-transition: transform 0.75s ease-in-out;
+$transition-menu-dark: 0.25s ease-out;
+
+// Disable all transitions
+.disable-transitions * {
+    transition: none !important;
+}
+
+// Button hover transition
+@mixin transition-button-hover {
+    transition: all 0.33s ease-out;
+}
+
+// Nav button hovers on desktop
+@mixin transition-nav-hover {
+    transition: transform 0.25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+// Menu open / close transition
+@mixin transition-menu-toggle($nav: 'false') {
+    $close: 0%;
+    $open: -100%;
+
+    @if $nav == 'true' {
+        $close: 100%;
+        $open: 0%;
+    }
+
+    transform: translateX($close);
+    transition: $menu-open-transition;
+
+    .menu-is-open & {
+        transform: translateX($open);
+    }
+
+    @include mq(width-lg) {
+        .menu-is-open &, & {
+            transform: translateX(0);
+        }
+    }
+}

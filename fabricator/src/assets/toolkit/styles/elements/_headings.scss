@@ -1,0 +1,24 @@
+/**
+ * Headings
+ */
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-weight: normal;
+
+    // Add top margin if heading follows another element that isn't a heading or breadcrumbs
+    *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(.c-h-xsm) + & {
+        margin-top: $base-spacing-unit;
+    }
+
+    > a {
+        &, &:hover, &:focus, &:visited {
+            color: currentColor;
+            text-decoration: none;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

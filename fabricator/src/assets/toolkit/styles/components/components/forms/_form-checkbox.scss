@@ -1,0 +1,84 @@
+/**
+ * Checkbox iput
+ */
+
+$checkbox-size: 22px;
+
+.c-form-checkbox {
+    &__label {
+        display: block;
+        width: 100%;
+        text-align: left;
+
+        &:before {
+            display: inline-block;
+        }
+    }
+
+    &__text {
+        display: inline-block;
+        width: calc(100% - 2.75em);
+    }
+
+    input[type='checkbox'] {
+        position: absolute;
+        opacity: 0;
+
+        & + .c-form-checkbox__label {
+            &:before {
+                display: inline-block;
+                position: relative;
+                top: -2px;
+                width: $checkbox-size;
+                height: $checkbox-size;
+                margin-right: 0.5em;
+                background: $color-white;
+                border: 3px solid $color-border;
+                text-align: center;
+                content: '';
+                cursor: pointer;
+                vertical-align: top;
+                transition: background-color 250ms ease;
+            }
+        }
+
+        &:checked {
+            & + .c-form-checkbox__label {
+                &:before {
+                    background-color: $color-black;
+                    background-image: url(../images/check.svg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+
+        &:focus {
+            & + .c-form-checkbox__label {
+                &:before {
+                    outline: thin dotted;
+                    outline-offset: -3px;
+                }
+            }
+        }
+
+        &:disabled {
+            & + .c-form-checkbox__label {
+                &:before {
+                    background: $color-gray;
+                    border-color: $color-gray;
+                }
+            }
+        }
+
+        & + .c-form-checkbox__label {
+            cursor: pointer;
+
+            &:empty {
+                &:before {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

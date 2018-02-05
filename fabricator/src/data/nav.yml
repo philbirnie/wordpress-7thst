@@ -1,0 +1,15 @@
+main:
+    Link 1: "#"
+    Link 2: "#"
+    Link 3: "#"
+    Link 4: "#"
+
+util:
+    555-555-5555: "tel:555-555-5555"
+    mail@email.com: "mailto:mail@email.com"
+
+foot:
+    Link 1: "#"
+    Link 2: "#"
+    Link 3: "#"
+    Link 4: "#"

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{{title}}</title>
+
+	<link rel="apple-touch-icon" href="/assets/toolkit/images/apple-touch-icon.png">
+
+	<link rel="stylesheet" href="{{baseurl}}/assets/toolkit/styles/toolkit.css">
+
+	{{#if pageStyles}}
+		{{#each pageStyles}}
+		<link rel="stylesheet" href="{{../baseurl}}/assets/toolkit/styles/{{this}}">
+		{{/each}}
+	{{/if}}
+
+</head>
+<body data-sprites="/assets/toolkit/images/sprites.svg" class="{{section}}">
+	{{> head }}
+
+
+	<div class="c-page">
+		{% body %}
+
+		{{> foot }}
+
+	</div>
+
+	<!-- jQuery - For Fabricator only. Production will use Wordpress jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- / jQuery -->
+	<script src="{{baseurl}}/assets/toolkit/scripts/toolkit.js"></script>
+
+{{#if pageScripts}}
+	{{#each pageScripts}}
+	<script src="{{../baseurl}}/assets/toolkit/scripts/{{this}}"></script>
+	{{/each}}
+{{/if}}
+
+</body>
+</html>

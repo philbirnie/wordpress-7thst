@@ -1,0 +1,25 @@
+/**
+ * Footer nav
+ */
+
+.c-nav-foot {
+    &__list {
+        > li + li {
+            margin-top: em(24px);
+        }
+    }
+
+    &__btn {
+        font-size: em($base-font-size);
+
+        @include mq(width-lg) {
+            @include transition-nav-hover();            
+
+            &:active,
+            &:hover {
+                transform: scale(1.05);
+                text-decoration: none;
+            }
+        }
+    }
+}

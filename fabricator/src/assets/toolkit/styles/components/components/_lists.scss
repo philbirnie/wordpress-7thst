@@ -1,0 +1,149 @@
+/**
+ * Lists
+ */
+
+// Basic list with bullets
+.c-list-basic {
+    margin-bottom: 1rem;
+    padding-left: 2.125rem;
+
+    > li {
+        position: relative;
+        margin-bottom: rem($base-spacing-unit / 4);
+        line-height: 1;
+        
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &--pluses {
+        padding-left: 2.125rem * 2;
+        list-style: none;
+
+        > li {
+            &:before {
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: -2.5rem;
+                content: '+';
+            }
+        }
+    }
+}
+
+
+// No bullets
+.c-list-plain {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li + li {
+        margin-top: em($base-spacing-unit);
+    }
+
+    // Adds border between
+    &--bordered {
+        > li {
+            padding-bottom: em($base-spacing-unit);
+            border-bottom: 1px solid $color-border;
+        }
+    }
+
+    // No indentation
+    &--no-indent {
+        padding-left: 0;
+        
+        li {
+            margin-left: 0;
+        }
+    }
+
+    // No vertical margin
+    &--short {
+        > li + li {
+            margin-top: 0;
+        }
+    }
+}
+
+// List without bullets and inline
+.c-list-inline {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+
+    > li {
+        display: inline-block;
+        margin-right: $half-spacing-unit;
+    }
+
+    // Vertically align in middle
+    &--middle {
+        > li {
+            vertical-align: middle;
+        }
+    }
+
+    // Adds dividers between elements
+    &--bordered {
+        > li {
+            margin-right: 0.5em;
+
+            &:after {
+                display: inline-block;
+                margin-left: 0.75em;
+                content: '|';
+            }
+
+            &:last-child {
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    // Stack on mobile
+    &--stack-sm {
+        @include mq($from:0px, $until: width-sm-only) {
+            > li {
+                display: list-item;
+
+                & + li {
+                    margin-top: em($base-spacing-unit / 4);
+                }
+
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &--stack-lg-max {
+        @include mq($from:0px, $until: width-lg) {
+            > li {
+                display: list-item;
+
+                & + li {
+                    margin-top: em($base-spacing-unit / 4);
+                }
+
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &--narrow {
+        > li {
+            margin-right: $base-spacing-unit / 4;
+        }
+    }
+}

@@ -1,0 +1,96 @@
+/**
+ * Contact Form 7 Form overrides
+ */
+.wpcf7 .screen-reader-response {
+    @extend .u-visually-hidden;
+}
+
+// Wrapper for checkboxes and radio buttons
+.wpcf7-list-item {
+    display: block;
+    margin-left: 0;
+
+    & + & {
+        margin-top: 0.5rem;
+    }
+}
+
+// Checkbox label
+input[type='checkbox'] + .wpcf7-list-item-label {
+    display: inline-block;
+    margin-bottom: 0.5em;
+    margin-left: 0.25em;
+}
+
+.wpcf7-checkbox span.wpcf7-list-item,
+.wpcf7-radio span.wpcf7-list-item {
+    display: inline-block;
+    margin: 0;
+}
+
+.wpcf7 input[type='checkbox'] {
+    width: 1.125rem;
+    height: 1.125rem;
+    font-size: 1rem;
+}
+
+// Error label
+.wpcf7-not-valid-tip {
+    margin-top: 0.25rem;
+    color: $color-error;
+    font-size: rem($xsm-font-size);
+}
+
+// Error success boxes
+div.wpcf7-mail-sent-ok,
+div.wpcf7-validation-errors {
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+}
+
+div.wpcf7-mail-sent-ok[role='alert'] {
+    color: $color-base;
+}
+
+div.wpcf7-validation-errors {
+    background: transparent;
+    color: $color-white;
+}
+
+div.wpcf7-response-output {
+    padding: 1rem 0 0 0;
+    background-color: transparent;
+    color: $color-base;
+    @include font('bold');
+}
+
+.wpcf7 [role='alert'] {
+    color: $color-error;
+}
+
+.o-section--blue {
+    div.wpcf7-response-output {
+        background-color: transparent;
+    }
+
+    div.wpcf7-response-output,
+    div.wpcf7-validation-errors,
+    div.wpcf7-mail-sent-ok[role='alert'] {
+        color: $color-white;
+    }
+
+    .wpcf7-not-valid-tip {
+        color: $color-white;
+    }
+
+    .wpcf7-response-output[role='alert'],
+    div.wpcf7-validation-errors[role='alert'] {
+        color: $color-white;
+        text-align: center;
+    }
+
+    [role='alert'] {
+        color: $color-white;
+    }
+}

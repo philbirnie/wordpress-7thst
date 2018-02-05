@@ -1,0 +1,7 @@
+<nav class="c-nav-foot{{#if class}} {{class}}{{/if}}">
+    <ul class="c-nav-foot__list c-list-plain">
+    {{#each nav.foot}}
+        <li class="c-nav-foot__item"><a href="{{this}}" class="c-nav-foot__btn c-btn-bold">{{@key}}</a></li>
+    {{/each}}
+    </ul>
+</nav>

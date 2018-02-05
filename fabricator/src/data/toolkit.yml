@@ -1,0 +1,10 @@
+colors:
+    Primary:
+        $color-red:             "#FF0000"
+        $color-blue-dark:       "#213A56"
+        $color-blue:            "#2F8ACA"
+
+    Secondary:
+        $color-black:           "#000000"
+        $color-gray:            "#CBD1DB"
+        $color-white:           "#FFFFFF"

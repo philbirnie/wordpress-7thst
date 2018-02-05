@@ -1,0 +1,85 @@
+/**
+ * Helpers for Supercell layout
+ */
+
+.o-layout--bordered {
+    > .o-layout__item {
+        & + .o-layout__item {
+            position: relative;
+            padding-top: $supercell-spacing-unit / 2;
+
+            &:before {
+                display: block;
+                position: absolute;
+                top: 0;
+                width: calc(100% - #{$supercell-spacing-unit});
+                height: 1px;
+                background-color: $color-white;
+                content: '';
+
+                @include mq(width-lg) {
+                    left: $supercell-spacing-unit / 2;
+                    width: 1px;
+                    height: 100%;
+                }
+            }
+
+            @include mq(width-lg) {
+                padding-top: 0;
+            }
+        }
+    }
+}
+.o-layout--bordered-alt {
+    > .o-layout__item {
+        & + .o-layout__item {
+            &:before {
+                background-color: $color-border-alt;
+            }
+        }
+    }
+}
+
+
+/**
+ * Forces half height vertical spacing on mobile-tablet
+ *
+ */
+.o-layout--spaced-1\/2\@landscape-max {
+    @include mq($until: width-landscape-max) {
+        & > .o-layout__item {
+            margin-bottom: $base-spacing-unit;
+        }
+
+        &.o-layout--narrow > .o-layout__item {
+            margin-bottom: $base-spacing-unit;
+        }
+
+        &.o-layout--wide > .o-layout__item {
+            margin-bottom: $base-spacing-unit;
+        }
+    }
+}
+
+/**
+ * Half spaced grid on mobile/tablet
+ *
+ */
+.o-layout--spaced-1\/2\@lg-max {
+    @include mq($from: 0px, $until: width-lg-only) {
+        margin-left: -$supercell-spacing-unit / 2;
+
+        & > .o-layout__item {
+            margin-bottom: $supercell-spacing-unit / 2;
+            padding-left: $supercell-spacing-unit / 2;
+        }
+
+        &.o-layout--narrow > .o-layout__item {
+            margin-bottom: $supercell-spacing-unit / 2;
+        }
+
+        &.o-layout--wide > .o-layout__item {
+            margin-bottom: $supercell-spacing-unit / 2;
+        }
+    }
+}

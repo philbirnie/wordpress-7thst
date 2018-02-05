@@ -1,0 +1,22 @@
+/**
+ * Colors
+ */
+
+$color-black:                   #000000;
+$color-white:                   #ffffff;
+$color-gray:                    #666666;
+$color-gray-light:              #CCCCCC;
+
+$color-error:                   #ff0000;
+$color-error-bg:                #f9e0f1;
+
+$color-success:                 #008000;
+$color-success-bg:              #dbfddc;
+
+$color-base:                    $color-black;
+$color-btn:                     $color-black;
+$color-border:                  $color-gray;
+$color-border-alt:              rgba($color-white, 0.2);
+
+$color-input-border:            $color-gray;
+$color-nav-border:              rgba($color-white, 0.2);
