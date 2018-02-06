@@ -48,6 +48,7 @@
     "eslint-plugin-import": "^1.9.2",
     "fabricator-assemble": "^1.1.11",
     "gulp": "^3.9.1",
+    "gulp-concat-filenames": "^1.2.0",
     "gulp-if": "^2.0.1",
     "gulp-imagemin": "^3.0.1",
     "gulp-postcss": "^7.0.1",

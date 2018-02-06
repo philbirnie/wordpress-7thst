@@ -21,6 +21,7 @@
 fabricator/node_modules
 fabricator/dist
 fabricator/.sass-cache
+fabricator/src/materials/components/icons.html
 
 # Misc.
 .DS_Store

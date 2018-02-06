@@ -10,15 +10,15 @@ const reload = browserSync.reload;
 const runSequence = require('run-sequence');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
-const svgstore = require('gulp-svgstore');
-const svgmin = require('gulp-svgmin');
-const webpack = require('webpack');
-
 const gulpStylelint = require('gulp-stylelint');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer')({ remove: false });
 const csswring = require('csswring')({ preserveHacks: true, removeAllComments: true });
 const postpros = [autoprefixer];
+const svgstore = require('gulp-svgstore');
+const svgmin = require('gulp-svgmin');
+const concatFilenames = require('gulp-concat-filenames');
+const webpack = require('webpack');
 
 // configuration
 const config = {
@@ -59,6 +59,10 @@ const config = {
         },
     },
     sprites: {
+        fabricator: {
+            src: ['src/assets/toolkit/sprites/**/*.svg'],
+            dest: 'src/materials/components'
+        },
         toolkit: {
             src: ['src/assets/toolkit/sprites/**/*.svg'],
             dest: 'dist/assets/toolkit/images',
@@ -154,7 +158,7 @@ gulp.task('copy', () => {
 });
 
 // Sprites
-gulp.task('sprites', () => {
+gulp.task('sprites', ['sprites-to-fabricator'], () => {
     return gulp.src(config.sprites.toolkit.src)
     .pipe(svgmin({
         plugins: [{
@@ -167,12 +171,42 @@ gulp.task('sprites', () => {
     .pipe(gulp.dest(config.sprites.toolkit.dest));
 });
 
+// Create icon preview for Fabricator
+
+// Returns file name without path or extension
+function getFileName(filePath) {
+    const fileName = filePath
+        .replace(/^.*[\\\/]/, '')
+        .split('.')
+        .shift();
+
+    return fileName;
+}
+
+// Sprite template
+function fileNameFormatter(filepath) {
+    const fileName = getFileName(filepath);
+    const html =
+    `<svg class="c-icon" pointer-events="none">
+    <title>${fileName}</title>
+    <use xlink:href="#${fileName}"></use>
+</svg>`;
+    return html;
+}
+
+gulp.task('sprites-to-fabricator', () =>  {
+    return gulp.src(config.sprites.toolkit.src)
+    .pipe(concatFilenames('icons.html', {
+        template: fileNameFormatter, // Pass in a function
+    }))
+    .pipe(gulp.dest(config.sprites.fabricator.dest));
+});
+
 // Favicon
 gulp.task('favicon', () => {
     return gulp.src('src/favicon.ico')
     .pipe(gulp.dest(config.dest));
 });
-
 
 // assembler
 gulp.task('assembler', (done) => {

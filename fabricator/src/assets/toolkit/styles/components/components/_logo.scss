@@ -11,18 +11,5 @@
     @include mq(width-lg) {
         width: 204px;
         height: 29px;
-
-        .c-logo__text {
-            transition: fill $transition-menu-dark;
-        }
-    }
-}
-
-// When menu is dark
-.menu-is-dark {
-    @include mq(width-lg) {
-        .c-logo__text {
-            fill: $color-black;
-        }
     }
 }
