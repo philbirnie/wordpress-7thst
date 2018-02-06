@@ -5,6 +5,8 @@
 !/cms/wp-content/themes
 /cms/wp-content/themes/*
 !/cms/wp-content/themes/mytheme
+!/cms/plugins.sh
+!/cms/plugins.conf
 
 # Plugins
 !/cms/wp-content/mu-plugins
