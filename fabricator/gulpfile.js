@@ -69,6 +69,12 @@ const config = {
             watch: 'src/assets/toolkit/sprites/**/*.svg',
         },
     },
+    fonts: {
+        toolkit: {
+            src: 'src/assets/toolkit/fonts/**/*',
+            dest: 'dist/assets/toolkit/fonts',
+        },
+    },
     templates: {
         watch: 'src/**/*.{html,md,json,yml}',
     },
@@ -151,10 +157,10 @@ gulp.task('images', ['favicon'], () => {
     .pipe(gulp.dest(config.images.toolkit.dest));
 });
 
-// Copy
-gulp.task('copy', () => {
-    return gulp.src(['src/data/**/*'])
-	.pipe(gulp.dest(config.dest + '/assets/toolkit/data'));
+// Fonts
+gulp.task('fonts', () => {
+    return gulp.src(config.fonts.toolkit.src)
+	.pipe(gulp.dest(config.fonts.toolkit.dest));
 });
 
 // Sprites
@@ -265,7 +271,7 @@ gulp.task('default', ['clean'], () => {
         'scripts',
         'sprites',
         'images',
-        'copy',
+        'fonts',
         'assembler',
     ];
 
