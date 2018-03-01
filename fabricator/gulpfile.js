@@ -58,6 +58,13 @@ const config = {
             watch: 'src/assets/toolkit/images/**/*',
         },
     },
+    copy: {
+        toolkit: {
+            src: 'src/data/**/*.json',
+            dest: 'dist/assets/toolkit/data',
+            watch: 'src/data/**/*.json'
+        },
+    },
     sprites: {
         fabricator: {
             src: ['src/assets/toolkit/sprites/**/*.svg'],
@@ -161,6 +168,12 @@ gulp.task('images', ['favicon'], () => {
 gulp.task('fonts', () => {
     return gulp.src(config.fonts.toolkit.src)
 	.pipe(gulp.dest(config.fonts.toolkit.dest));
+});
+
+// Copy
+gulp.task('copy', () => {
+    return gulp.src(config.copy.toolkit.src)
+    .pipe(gulp.dest(config.copy.toolkit.dest));
 });
 
 // Sprites
