@@ -1,29 +1,3 @@
 /**
  * Tables
  */
-
-.c-table-compare {
-    width: 100%;
-
-    td {
-        width: 100%;
-        vertical-align: middle;
-
-        &.c-table-compare__title {
-            width: auto;
-            margin: 0;
-            padding-right: rem($base-spacing-unit / 2);
-            font-size: rem($xl-font-size);
-
-            @include mq(width-lg) {
-                padding-right: rem($base-spacing-unit * 2);
-                font-size: rem(36px);
-            }
-        }
-
-        @include mq(width-md) {
-            display: table-cell;
-            padding: rem($base-spacing-unit / 4) 0;
-        }
-    }
-}
