@@ -19,6 +19,9 @@ This repository contains the codebase for the website
     * User: root
     * Password: root
 
+### Installing plugins
+
+Keep all plugins that can be automatically installed in the `plugins.conf` file.  To install and activate all plugins in this file, simply run `docker-compose exec wordpress /var/www/html/plugins.sh`.  **This must be run AFTER the Wordpress installation has completed**
 
 ### Accessing Components
 
