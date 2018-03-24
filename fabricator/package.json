@@ -71,10 +71,10 @@
   "dependencies": {
     "axios": "^0.16.2",
     "boomsvgloader": "0.0.2",
+    "focus-visible": "^4.1.1",
     "picturefill": "^3.0.2",
     "sass-mq": "^3.3.2",
     "supercell": "^1.2.0",
     "vue": "^2.4.4",
-    "wicg-focus-ring": "^1.0.1"
   }
 }

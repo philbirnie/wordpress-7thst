@@ -4,7 +4,7 @@
 require('es6-promise').polyfill();
 require('custom-event-polyfill'); // Adds CustomEvent support to IE
 require('picturefill');
-require('wicg-focus-ring'); // Polyfill for `:focus-ring`
+require('focus-visible'); // Polyfill for `:focus-visible`
 
 const $ = require('jquery');
 const boomsvgloader = require('boomsvgloader');

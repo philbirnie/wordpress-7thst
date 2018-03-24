@@ -1,13 +1,13 @@
 
 // Adds accessible focus ring to buttons
 @mixin focus-button($outline-offset: -4px) {
-    &:focus:not(.focus-ring) {
-        outline-width: 0;
+    .js-focus-visible &:focus:not(.focus-visible) {
+        outline: 0;
     }
 }
 
 @mixin focus-input($outline-offset: 0) {
-    &:focus:not(.focus-ring) {
-        outline-width: 0;
+    .js-focus-visible &:focus:not(.focus-visible) {
+        outline: 0;
     }
 }
