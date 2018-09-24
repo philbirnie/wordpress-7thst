@@ -1,22 +1,55 @@
 /**
  * Fonts
+ *
+ * https://gist.github.com/fabricelejeune/bcdd3d4725d4e4cea672
+ *
  */
 
-// Default - Sans Serif
-@mixin font($weight: 'light') {
-    font-family: sans-serif;
+@import 'tools/functions/contains';
+@import 'tools/functions/map-deep-get';
 
-    @if $weight == 'light' {
-        font-weight: 300;
-    } @else if $weight == 'bold' {
-        font-weight: 600;
-    } @else {
-        @warn 'Weight not available for this font.';
-        @error 'Weight not available for this font.';
+// Set project-specific font-face
+// @font-face {
+//     font-family: 'Century Gothic';
+//     src: url(../fonts/my-font.woff2) format('woff2'),
+//         url(../fonts/my-font.woff) format('woff');
+//     font-style: normal;
+//     font-weight: 400;
+// }
+
+$base-font-stack: (
+    // Sans
+    base: (
+        regular: (
+            family: (Helvetica, sans-serif),
+            weight: 400,
+            style: normal
+        ),
+        bold: (
+            family: (Helvetica, sans-serif),
+            weight: 700,
+            style: normal
+        ),
+    ),
+
+    // Serif
+    headline: (
+        regular: (
+            family: (Georgia, serif),
+            weight: 400,
+            style: normal
+        )
+    ),
+);
+
+@mixin font($group: base, $variant: regular, $properties: family weight style, $font-stack: $base-font-stack) {
+    $font-properties: map-deep-get($font-stack, $group, $variant);
+    
+    @if $font-properties {
+        @each $property, $values in $font-properties {
+            @if contains($properties, $property) {
+                font-#{$property}: map-get($font-properties, $property);
+            }
+        }
     }
-}
-
-// Serif
-@mixin font-serif() {
-    font-family: Garamond, 'Times New Roman', serif;
 }

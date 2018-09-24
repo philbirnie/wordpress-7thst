@@ -10,7 +10,7 @@
 
 function setup_scripts() {
 	wp_register_script( 'main', get_template_directory_uri() . '/assets/scripts/toolkit.js',
-		array( 'jquery' ), '1.0.1', true );
+		array( 'jquery' ), wp_get_theme()->get( 'Version' ), true );
 
 
 	/** Allows us to access window.wp.X where X is an array element. */
@@ -23,7 +23,7 @@ add_action( 'wp_enqueue_scripts', 'setup_scripts' );
 
 function setup_styles() {
 	wp_register_style( 'main', get_template_directory_uri() . '/assets/styles/toolkit.css',
-		array(), '1.0.1' );
+		array(), wp_get_theme()->get( 'Version' ) );
 
 
 	wp_enqueue_style( 'main' );

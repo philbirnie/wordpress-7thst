@@ -62,7 +62,7 @@ div.wpcf7-response-output {
     padding: 1rem 0 0 0;
     background-color: transparent;
     color: $color-base;
-    @include font('bold');
+    @include font();
 }
 
 .wpcf7 [role='alert'] {
