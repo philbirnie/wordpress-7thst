@@ -13,3 +13,11 @@ RUN yes | pecl install xdebug \
     && echo "xdebug.remote_connect_back=off" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 RUN echo "xdebug.remote_host=docker.for.mac.localhost" >> /usr/local/etc/php/conf.d/xdebug.ini
+
+RUN apt-get update && \
+	apt-get install -y  --no-install-recommends ssl-cert && \
+	rm -r /var/lib/apt/lists/* && \
+	a2enmod ssl && \
+	a2ensite default-ssl
+
+EXPOSE 443
