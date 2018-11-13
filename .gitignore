@@ -5,6 +5,7 @@
 !/cms/wp-content/themes
 /cms/wp-content/themes/*
 !/cms/wp-content/themes/mytheme
+!/cms/wp-content/themes/kreate-child
 !/cms/plugins.sh
 !/cms/plugins.conf
 

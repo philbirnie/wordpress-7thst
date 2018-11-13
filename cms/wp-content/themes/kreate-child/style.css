@@ -1,0 +1,57 @@
+/*
+Theme Name: Kreate Child
+Theme URI: http://kreate.elated-themes.com/
+Description: A child theme of Kreate Theme
+Author: Elated Themes
+Author URI: http://themeforest.net/user/elated-themes
+Version: 1.0.0
+Template: kreate
+*/
+@import url("../kreate/style.css");
+
+
+/* Other CSS is stored in theme at Elated Options > General > Custom Code */
+
+.c-h-lg h2,
+.c-h-lg h3 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #222;
+    font-size: 43px;
+    font-weight: 700;
+    line-height: 1.1em;
+    vertical-align: baseline;
+}
+
+#reservations_online_reviews {
+    max-width: 100%;
+}
+
+.ROReviews {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.ROReviews, .ROReviews:before, .ROReviews:after,
+.ROReviews > * {
+    box-sizing: border-box;
+}
+
+.ROReviews,
+.ROReviews #review_box {
+    width: 100% !important;
+}
+.ROReviews  #review_box {
+    padding: 10px 20px 20px;
+    background-color: white;
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .c-h-lg h2,
+    .c-h-lg h3 {
+        font-size: 32px;
+    }
+}
