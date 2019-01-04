@@ -38,3 +38,13 @@ All development shall be done on the dev branch.  Commits pushed to master will 
 1. Site construction utilizes fabricator.  To build, run `gulp` within the fabricator folder. Here are a few options:
     `--dev`: Development with watching, browsersync, etc.
     `--nowp`: Don't launch the wordpress browserstack instance (helpful if you are just doing FE work or don't have docker running)
+
+
+### WordPress Settings.
+**Max Revisions**
+To set maximum post revisions, add the following constant to wp-config.php:
+`define( 'WP_POST_REVISIONS', 3 );`
+
+**WP DB Migrate Pro License**
+Set the following constant in wp-config.php:
+`define( 'WPMDB_LICENCE', 'my-wp-db-migrate-license-key' );`
