@@ -7,7 +7,7 @@ services:
       - "./.data/db:/var/lib/mysql"
       # Place mysql dump in mysql folder for automatic import
       - "./mysql:/docker-entrypoint-initdb.d"
-    restart: always
+    restart: "no"
     ports:
       - "3306:3306"
     environment:
@@ -27,7 +27,7 @@ services:
       - db
     ports:
       - "8000:443"
-    restart: always
+    restart: "no"
     environment:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_PASSWORD: root
@@ -37,7 +37,7 @@ services:
     image: mailhog/mailhog:latest
     depends_on:
       - wordpress
-    restart: always
+    restart: "no"
     ports:
       - "8025:8025"
       - "1025:1025"
