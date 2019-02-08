@@ -12,6 +12,7 @@ const prefix = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
+const stylelint = require('gulp-stylelint');
 const svgstore = require('gulp-svgstore');
 const svgmin = require('gulp-svgmin');
 const webpack = require('webpack');
@@ -46,6 +47,9 @@ const config = {
       dest: 'dist/assets/toolkit/styles',
       watch: 'src/assets/toolkit/styles/**/*.scss',
     },
+    toolkitLint: {
+      src: ['src/assets/toolkit/styles/**/*.scss', '!src/assets/toolkit/styles/generic/_normalize.scss'],
+    },
   },
   scripts: {
     fabricator: {
@@ -75,6 +79,13 @@ const config = {
       src: ['src/assets/toolkit/sprites/**/*.svg'],
       dest: 'dist/assets/toolkit/images',
       watch: 'src/assets/toolkit/sprites/**/*.svg',
+    },
+  },
+  copy: {
+    toolkit: {
+      src: 'src/data/**/*.json',
+      dest: 'dist/assets/toolkit/data',
+      watch: 'src/data/**/*.json',
     },
   },
   fonts: {
@@ -120,7 +131,21 @@ function stylesToolkit() {
     .pipe(gulp.dest(config.styles.toolkit.dest));
 }
 
-const styles = gulp.parallel(stylesFabricator, stylesToolkit);
+// Stylelint
+function lintStyles() {
+  return gulp
+    .src(config.styles.toolkitLint.src)
+    .pipe(stylelint({
+      reporters: [
+        {
+          formatter: 'string',
+          console: true,
+        }
+      ]
+    }))
+}
+
+const styles = gulp.parallel(stylesFabricator, lintStyles, stylesToolkit);
 
 // scripts
 const webpackConfig = require('./webpack.config')(config);
@@ -208,6 +233,13 @@ function spritesToFabricator() {
 }
 
 const sprites = gulp.series(buildSprites, spritesToFabricator);
+
+// copy
+function copy() {
+  return gulp
+    .src(config.copy.toolkit.src)
+    .pipe(gulp.dest(config.copy.toolkit.dest));
+}
 
 // fonts
 function fonts() {
@@ -309,6 +341,11 @@ function watch() {
     gulp.series(images, reload)
   );
   gulp.watch(
+    config.copy.toolkit.watch,
+    { interval: 500 },
+    gulp.series(copy, reload)
+  );
+  gulp.watch(
     config.sprites.toolkit.watch,
     { interval: 500 },
     gulp.series(sprites, reload)
@@ -321,6 +358,6 @@ function watch() {
 }
 
 // default build task
-let tasks = [clean, styles, scripts, images, sprites, fonts, assembler];
+let tasks = [clean, styles, scripts, images, sprites, copy, fonts, assembler];
 if (config.dev) tasks = tasks.concat([serve, watch]);
 gulp.task('default', gulp.series(tasks));
