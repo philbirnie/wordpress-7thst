@@ -8,11 +8,12 @@ require('focus-visible'); // Polyfill for `:focus-visible`
 
 const $ = require('jquery');
 const boomsvgloader = require('boomsvgloader');
+
 const spriteSheetURL = document.body.getAttribute('data-sprites');
 
 // Load svg spritesheet
 if (spriteSheetURL) {
-    boomsvgloader.load(spriteSheetURL);
+  boomsvgloader.load(spriteSheetURL);
 }
 
 // Adds object-fit functionality to older browsers

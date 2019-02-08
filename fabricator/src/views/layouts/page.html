@@ -10,7 +10,7 @@
 
 	<link rel="apple-touch-icon" href="/assets/toolkit/images/apple-touch-icon.png">
 
-	<link rel="stylesheet" href="{{baseurl}}/assets/toolkit/styles/toolkit.css">
+	<link rel="stylesheet" href="{{#if baseurl}}{{ baseurl }}/{{/if}}assets/toolkit/styles/toolkit.css">
 
 	{{#if pageStyles}}
 		{{#each pageStyles}}
@@ -33,7 +33,7 @@
 	<!-- jQuery - For Fabricator only. Production will use Wordpress jQuery -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- / jQuery -->
-	<script src="{{baseurl}}/assets/toolkit/scripts/toolkit.js"></script>
+	<script src="{{#if baseurl}}{{ baseurl }}/{{/if}}assets/toolkit/scripts/toolkit.js"></script>
 
 {{#if pageScripts}}
 	{{#each pageScripts}}
