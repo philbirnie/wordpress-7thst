@@ -1,16 +1,19 @@
 const fabAssemble = require('fabricator-assemble');
 const browserSync = require('browser-sync');
+const concatFilenames = require('gulp-concat-filenames');
 const csso = require('gulp-csso');
 const del = require('del');
 const gulp = require('gulp');
+const gulpif = require('gulp-if');
 const argv = require('minimist')(process.argv.slice(2));
 const log = require('fancy-log');
-const gulpif = require('gulp-if');
 const imagemin = require('gulp-imagemin');
 const prefix = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
+const svgstore = require('gulp-svgstore');
+const svgmin = require('gulp-svgmin');
 const webpack = require('webpack');
 sass.compiler = require('node-sass');
 
@@ -61,6 +64,17 @@ const config = {
       src: ['src/assets/toolkit/images/**/*', 'src/favicon.ico'],
       dest: 'dist/assets/toolkit/images',
       watch: 'src/assets/toolkit/images/**/*',
+    },
+  },
+  sprites: {
+    fabricator: {
+      src: ['src/assets/toolkit/sprites/**/*.svg'],
+      dest: 'src/materials/components',
+    },
+    toolkit: {
+      src: ['src/assets/toolkit/sprites/**/*.svg'],
+      dest: 'dist/assets/toolkit/images',
+      watch: 'src/assets/toolkit/sprites/**/*.svg',
     },
   },
   fonts: {
@@ -138,6 +152,62 @@ function imgMinification() {
     .pipe(gulp.dest(config.images.toolkit.dest));
 }
 const images = gulp.series(imgFavicon, imgMinification);
+
+// sprites
+function buildSprites() {
+  return gulp
+    .src(config.sprites.toolkit.src)
+    .pipe(
+      svgstore({
+        inlineSvg: true,
+        parserOptions: { xmlMode: true },
+      })
+    )
+    .pipe(
+      svgmin({
+        plugins: [
+          {
+            cleanupIDs: false,
+            removeViewBox: false,
+          },
+        ],
+      })
+    )
+    .pipe(gulp.dest(config.sprites.toolkit.dest));
+}
+
+// Returns file name without path or extension
+function getFileName(filePath) {
+  const fileName = filePath
+    .replace(/^.*[\\\/]/, '')
+    .split('.')
+    .shift();
+
+  return fileName;
+}
+
+// Sprite template
+function fileNameFormatter(filepath) {
+  const fileName = getFileName(filepath);
+  const html = `<svg class="c-icon" pointer-events="none">
+    <title>${fileName}</title>
+    <use xlink:href="#${fileName}"></use>
+  </svg>`;
+  return html;
+}
+
+function spritesToFabricator() {
+  return gulp
+    .src(config.sprites.toolkit.src)
+    .pipe(
+      concatFilenames('icons.html', {
+        template: fileNameFormatter,
+      })
+    )
+    .pipe(gulp.dest(config.sprites.fabricator.dest));
+}
+
+const sprites = gulp.series(buildSprites, spritesToFabricator);
 
 // fonts
 function fonts() {
@@ -239,6 +309,11 @@ function watch() {
     gulp.series(images, reload)
   );
   gulp.watch(
+    config.sprites.toolkit.watch,
+    { interval: 500 },
+    gulp.series(sprites, reload)
+  );
+  gulp.watch(
     [config.styles.fabricator.watch, config.styles.toolkit.watch],
     { interval: 500 },
     gulp.series(styles, reload)
@@ -246,6 +321,6 @@ function watch() {
 }
 
 // default build task
-let tasks = [clean, styles, scripts, images, fonts, assembler];
+let tasks = [clean, styles, scripts, images, sprites, fonts, assembler];
 if (config.dev) tasks = tasks.concat([serve, watch]);
 gulp.task('default', gulp.series(tasks));
