@@ -1,0 +1,39 @@
+/**
+ * Select element
+ */
+
+.c-form-select {
+    display: block;
+    position: relative;
+
+    select,
+    &__input {
+        @extend .c-form-text;
+        position: relative;
+        height: em(42px);
+        padding: 0.075em 2.5em 0 rem($base-spacing-unit / 2 - 4px);
+        padding-right: 2.5em;
+        appearance: none;
+
+        // Ensures text doesn't turn red in error state
+        &.c-form-error {
+            color: currentColor !important;
+        }
+
+        // hide arrow on modern versions of IE
+        &::-ms-expand {
+            display: none;
+        }
+    }
+
+    // Chevron
+    &::after {
+        display: block;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        content: '';
+        pointer-events: none;
+        @include chevron(0.75em, 1px, $color-gray, 'down');
+    }
+}

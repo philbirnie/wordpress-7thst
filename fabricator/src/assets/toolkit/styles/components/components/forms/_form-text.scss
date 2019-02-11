@@ -1,0 +1,49 @@
+/**
+ * Text input field
+ */
+
+.c-form-text {
+    display: block;
+    width: 100%;
+    padding: 0.638em rem($base-spacing-unit / 2 - 4px);
+    background: $color-white;
+    border: 2px solid $color-input-border;
+    border-radius: 0;
+    font-size: rem($base-font-size);
+    @include font();
+
+    // Inline block variant
+    &--inline {
+        display: inline-block;
+        width: auto;
+        min-width: 0;
+    }
+
+    // Max-width variant
+    &--max {
+        max-width: rem(400px);
+    }
+
+    // Error style
+    &[aria-invalid='true'] {
+        border-color: $color-error;
+    }
+
+    // Preserve appearance attributes on specialized inputs
+    &:not([type='select']) {
+        appearance: none;
+    }
+
+    // Fixes vertical alignment on Mobile Safari
+    &::placeholder {
+        padding: 0.25em 0;
+    }
+
+    // Adds extra horizontal padding in IE 10-11 & Edge
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        &::placeholder {
+            padding-right: rem($base-spacing-unit / 2 - 4px);
+            padding-left: rem($base-spacing-unit / 2 - 4px);
+        }
+    }
+}

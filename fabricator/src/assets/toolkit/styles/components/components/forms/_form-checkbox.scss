@@ -5,6 +5,11 @@
 $checkbox-size: 22px;
 
 .c-form-checkbox {
+    display: inline-block;
+    width: auto;
+    margin: 0 rem($half-spacing-unit) rem($half-spacing-unit) 0;
+    clear: both;
+
     &__label {
         display: block;
         width: 100%;

@@ -1,0 +1,9 @@
+/**
+ * Text area
+ */
+
+.c-form-textarea {
+    @extend .c-form-text;
+    min-height: em(100px);
+    appearance: none;
+}
