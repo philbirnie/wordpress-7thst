@@ -1,0 +1,17 @@
+/**
+ * Form error styles
+ */
+
+// Error state
+.c-form-error {
+    border-color: color(error);
+    color: color(error);
+}
+
+// Error label
+.c-form-error-message {
+    display: block;
+    color: color(error);
+    font-size: 0.75rem;
+    font-weight: bold;
+}
