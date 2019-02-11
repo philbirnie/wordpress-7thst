@@ -1,0 +1,23 @@
+/**
+ * Form label
+ */
+
+.c-form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    clear: both;
+    line-height: $base-line-height;
+
+    &--inline {
+        display: inline-block;
+
+        & + & {
+            margin-left: 1em;
+        }
+    }
+
+    &__text {
+        display: block;
+        overflow: hidden;
+    }
+}

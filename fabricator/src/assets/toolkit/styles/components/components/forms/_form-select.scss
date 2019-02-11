@@ -8,11 +8,7 @@
 
     select,
     &__input {
-<<<<<<< HEAD
         @extend .c-form-text;
-=======
-        @extend .c-form-field;
->>>>>>> e898e6236b7a66772003f10df31bc53d31d0b883
         position: relative;
         height: em(42px);
         padding: 0.075em 2.5em 0 rem($base-spacing-unit / 2 - 4px);
