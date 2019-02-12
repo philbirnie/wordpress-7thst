@@ -6,6 +6,10 @@ require('custom-event-polyfill'); // Adds CustomEvent support to IE
 require('picturefill');
 require('focus-visible'); // Polyfill for `:focus-visible`
 
+const SmoothScroll = require('smooth-scroll');
+
+const smoothScroll = new SmoothScroll('a[href*="#"]'); /* eslint-disable-line */
+
 const $ = require('jquery');
 const boomsvgloader = require('boomsvgloader');
 
