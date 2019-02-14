@@ -110,7 +110,8 @@ function stylesFabricator() {
     .pipe(gulpif(!config.dev, csso()))
     .pipe(rename('f.css'))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(config.styles.fabricator.dest));
+    .pipe(gulp.dest(config.styles.fabricator.dest))
+    .pipe(server.stream());
 }
 
 function stylesToolkit() {
@@ -349,7 +350,7 @@ function watch() {
   );
   gulp.watch(
     [config.styles.fabricator.watch, config.styles.toolkit.watch],
-    { interval: 500 },
+    { interval: 250 },
     gulp.series(styles)
   );
 }
