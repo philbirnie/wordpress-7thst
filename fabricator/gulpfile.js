@@ -19,7 +19,8 @@ const webpack = require('webpack');
 const browsers = require('./package.json');
 sass.compiler = require('node-sass');
 
-let server = false;
+const server = browserSync.create();
+
 function reload(done) {
   if (server) server.reload();
   done();
@@ -124,7 +125,8 @@ function stylesToolkit() {
     .pipe(prefix(config.styles.browsers))
     .pipe(gulpif(!config.dev, csso()))
     .pipe(gulpif(config.dev, sourcemaps.write()))
-    .pipe(gulp.dest(config.styles.toolkit.dest));
+    .pipe(gulp.dest(config.styles.toolkit.dest))
+    .pipe(server.stream());
 }
 
 // Stylelint
@@ -141,7 +143,7 @@ function lintStyles() {
     }))
 }
 
-const styles = gulp.parallel(stylesFabricator, lintStyles, stylesToolkit);
+const styles = gulp.series(stylesFabricator, lintStyles, stylesToolkit);
 
 // scripts
 const webpackConfig = require('./webpack.config')(config);
@@ -309,7 +311,6 @@ function assembler(done) {
 
 // server
 function serve(done) {
-  server = browserSync.create();
   server.init({
     server: {
       baseDir: config.dest,
@@ -349,7 +350,7 @@ function watch() {
   gulp.watch(
     [config.styles.fabricator.watch, config.styles.toolkit.watch],
     { interval: 500 },
-    gulp.series(styles, reload)
+    gulp.series(styles)
   );
 }
 
