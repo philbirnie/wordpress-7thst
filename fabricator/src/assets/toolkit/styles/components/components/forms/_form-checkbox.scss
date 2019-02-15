@@ -1,5 +1,5 @@
 /**
- * Checkbox iput
+ * Checkbox input
  */
 
 $checkbox-size: 22px;
@@ -38,7 +38,7 @@ $checkbox-size: 22px;
                 height: $checkbox-size;
                 margin-right: 0.5em;
                 background: $color-white;
-                border: 3px solid $color-border;
+                border: 2px solid $color-border;
                 text-align: center;
                 content: '';
                 cursor: pointer;
@@ -47,10 +47,11 @@ $checkbox-size: 22px;
             }
         }
 
+        // Checked state
         &:checked {
             & + .c-form-checkbox__label {
                 &:before {
-                    background-color: $color-black;
+                    background-color: $color-white;
                     background-image: url(../images/check.svg);
                     background-position: center;
                     background-repeat: no-repeat;
@@ -58,20 +59,20 @@ $checkbox-size: 22px;
             }
         }
 
+        // Focus state
         &:focus {
             & + .c-form-checkbox__label {
-                &:before {
-                    outline: thin dotted;
-                    outline-offset: -3px;
-                }
+                outline: thin dotted;
+                outline-offset: 0;
             }
         }
 
+        // Disabled state
         &:disabled {
             & + .c-form-checkbox__label {
                 &:before {
-                    background: $color-gray;
-                    border-color: $color-gray;
+                    background: $color-gray-light;
+                    border-color: lighten($color-gray, 20%);
                 }
             }
         }
@@ -87,3 +88,4 @@ $checkbox-size: 22px;
         }
     }
 }
+ 
