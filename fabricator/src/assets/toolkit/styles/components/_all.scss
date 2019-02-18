@@ -3,38 +3,34 @@
  */
 
 // Basic components
-@import 'components/buttons/button';
-@import 'components/buttons/menu-button';
-@import 'components/forms/form-text';
-@import 'components/forms/form-checkbox';
-@import 'components/forms/form-date';
-@import 'components/forms/form-label';
-@import 'components/forms/form-radio';
-@import 'components/forms/form-select';
-@import 'components/forms/form-textarea';
-@import 'components/forms/form-errors';
-@import 'components/headings';
-@import 'components/horizontal-rule';
-@import 'components/icon';
-@import 'components/images';
-@import 'components/label';
-@import 'components/lists';
-@import 'components/logo';
-@import 'components/main';
-@import 'components/tables';
-@import 'components/typography';
+@import 'buttons/button';
+@import 'buttons/menu-button';
+@import 'forms/form-text';
+@import 'forms/form-checkbox';
+@import 'forms/form-date';
+@import 'forms/form-label';
+@import 'forms/form-radio';
+@import 'forms/form-select';
+@import 'forms/form-textarea';
+@import 'forms/form-errors';
+@import 'headings';
+@import 'horizontal-rule';
+@import 'icon';
+@import 'images';
+@import 'label';
+@import 'lists';
+@import 'logo';
+@import 'main';
+@import 'tables';
+@import 'typography';
 
 // Navigation
-@import 'components/navigation/nav-foot';
-@import 'components/navigation/nav-main';
-@import 'components/navigation/nav-sub';
-@import 'components/navigation/nav-util';
+@import 'navigation/nav-foot';
+@import 'navigation/nav-main';
+@import 'navigation/nav-sub';
+@import 'navigation/nav-util';
 
-@import 'components/blockquote';
-@import 'components/page';
+@import 'blockquote';
+@import 'page';
 
-@import 'components/wp-wysiwyg';
-
-// Modules
-@import 'modules/foot';
-@import 'modules/head';
+@import 'wp-wysiwyg';
