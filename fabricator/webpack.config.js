@@ -8,7 +8,7 @@ function getRules() {
   return [
     {
       test: /(\.js)/,
-      exclude: /(node_modules)/,
+      exclude: /(node_modules)|prism\.js/,
       use: {
         loader: 'babel-loader',
       },
