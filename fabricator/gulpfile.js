@@ -305,6 +305,9 @@ function assembler(done) {
       mod: function mod(a, b) {
         return +a % +b;
       },
+      setVariable: require('./helpers/setVariable.js'),
+      ifEval: require('./helpers/ifEval'),
+      forLoop: require('./helpers/forLoop'),
     },
   });
   done();
