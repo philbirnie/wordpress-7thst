@@ -3,62 +3,8 @@
  */
 
 .c-wysiwyg {
-    h1 {
+    position: relative;
 
-    }
-
-    h2 { 
-
-    }
-
-    h3 {
-
-    }
-
-    h4 {
-
-    }
-
-    h5 {
-
-    }
-
-    ul:not([class]), ol:not([class]) {
-        @extend .c-list-basic;
-    }
-
-    img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    hr {
-        @extend .c-hrule;
-    }
-
-    blockquote {
-
-    }
-
-    .alignright {
-        display: block;
-        padding-bottom: 1rem;
-
-        @include mq(width-sm) {
-            display: inline;
-            padding: 0 0 1rem 1rem;
-            float: right;
-        }
-    }
-
-    .alignleft {
-        display: block;
-        padding-bottom: 1rem;
-
-        @include mq(width-sm) {
-            display: inline;
-            padding: 0 1rem 1rem 0;
-            float: left;
-        }
-    }
+    @include wordpress-styles();
+    @include clearfix();
 }

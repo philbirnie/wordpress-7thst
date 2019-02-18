@@ -1,0 +1,79 @@
+@mixin wordpress-styles() {
+    h1 {
+        @extend .c-h-lg;
+    }
+
+    h2 {
+        @extend .c-h-md;
+    }
+
+    h3 {
+        @extend .c-h-sm;
+    }
+
+    h4 {
+        @extend .c-h-xsm !optional;
+    }
+
+    h5 {
+        @extend .c-h-xxsm !optional;
+    }
+
+    ul, ol:not([class]) {
+        @extend .c-list-basic;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    hr {
+        @extend .c-hrule;
+    }
+
+    blockquote {
+        @extend .c-blockquote;
+    }
+
+    table {
+        @extend .c-table-data !optional;
+    }
+
+    .alignright, .alignleft {
+        position: relative;
+        margin: 0 auto;
+        padding: 0;
+        z-index: 2;
+    }
+
+    .alignright {
+        display: block;
+        margin-bottom: rem($base-spacing-unit * 2);
+
+        @include mq(width-lg) {
+            display: inline-block;
+            margin: 0 0 rem($base-spacing-unit * 2) rem($base-spacing-unit * 2);
+            float: right;
+        }
+    }
+
+    .alignleft {
+        display: block;
+        margin-bottom: 1rem;
+
+        @include mq(width-lg) {
+            display: inline-block;
+            margin: 0 rem($base-spacing-unit * 2) rem($base-spacing-unit * 2) 0;
+            float: left;
+        }
+    }
+
+    .aligncenter {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        clear: both;
+        text-align: center;
+    }
+}

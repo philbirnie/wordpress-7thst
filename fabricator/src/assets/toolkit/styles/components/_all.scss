@@ -2,6 +2,7 @@
  * Components
  */
 
+// Basic components
 @import 'components/buttons/button';
 @import 'components/buttons/menu-button';
 @import 'components/forms/form-text';
@@ -23,11 +24,15 @@
 @import 'components/tables';
 @import 'components/typography';
 
+// Navigation
 @import 'components/navigation/nav-foot';
 @import 'components/navigation/nav-main';
 @import 'components/navigation/nav-sub';
 @import 'components/navigation/nav-util';
+
+@import 'components/blockquote';
 @import 'components/page';
+
 @import 'components/wp-wysiwyg';
 
 // Modules
