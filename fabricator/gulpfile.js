@@ -36,12 +36,15 @@ const config = {
       watch: 'src/assets/fabricator/styles/**/*.scss',
     },
     toolkit: {
-      src: 'src/assets/toolkit/styles/toolkit.scss',
+      src: 'src/assets/toolkit/styles/*.scss',
       dest: 'dist/assets/toolkit/styles',
       watch: 'src/assets/toolkit/styles/**/*.scss',
     },
     toolkitLint: {
-      src: ['src/assets/toolkit/styles/**/*.scss', '!src/assets/toolkit/styles/generic/_normalize.scss'],
+      src: [
+        'src/assets/toolkit/styles/**/*.scss',
+        '!src/assets/toolkit/styles/generic/_normalize.scss',
+      ],
     },
   },
   scripts: {
@@ -132,16 +135,16 @@ function stylesToolkit() {
 
 // Stylelint
 function lintStyles() {
-  return gulp
-    .src(config.styles.toolkitLint.src)
-    .pipe(stylelint({
+  return gulp.src(config.styles.toolkitLint.src).pipe(
+    stylelint({
       reporters: [
         {
           formatter: 'string',
           console: true,
-        }
-      ]
-    }))
+        },
+      ],
+    })
+  );
 }
 
 const styles = gulp.series(stylesFabricator, lintStyles, stylesToolkit);
