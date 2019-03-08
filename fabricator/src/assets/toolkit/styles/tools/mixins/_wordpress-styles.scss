@@ -20,7 +20,7 @@
     }
 
     ul, ol:not([class]) {
-        @extend .c-list-basic;
+        @extend .c-list;
     }
 
     img {

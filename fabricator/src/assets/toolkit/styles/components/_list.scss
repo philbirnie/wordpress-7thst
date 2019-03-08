@@ -1,0 +1,82 @@
+/**
+ * Basic list
+ *
+ * A list with bullets
+ */
+
+.c-list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-left: 2.125rem;
+
+    > li {
+        position: relative;
+        margin: 0;
+    }
+
+    > li + li {
+        margin-top: em($base-spacing-unit / 3);
+    }
+}
+
+// Flush - No indentation
+.c-list--flush {
+    margin-left: 1em;
+    padding-left: 0;
+
+    &.c-list--plain {
+        margin-left: 0;
+    }
+}
+
+// Inside - List style: position inside
+.c-list--inside {
+    list-style-position: inside;
+
+    &.c-list--flush {
+        margin-left: 0;
+    }
+}
+
+// Plain - No list style
+.c-list--plain {
+    list-style: none;
+}
+
+// Tight - Smaller margin between items
+.c-list--tight {
+    > li + li {
+        margin-top: em($base-spacing-unit / 6);
+    }
+
+    &.c-list--inline {
+        > li + li {
+            margin-left: em($base-spacing-unit / 2);
+        }
+    }
+}
+
+// Inline - Horizontal list
+.c-list--inline {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & > li {
+        display: inline-flex;
+    }
+
+    & > li + li {
+        margin-top: 0;
+        margin-left: em($base-spacing-unit);
+    }
+}
+
+// Center - Vertically center items
+.c-list--middle {
+    justify-items: center;
+}
