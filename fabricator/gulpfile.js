@@ -61,9 +61,24 @@ const config = {
   },
   images: {
     toolkit: {
-      src: ['src/assets/toolkit/images/**/*', 'src/favicon.ico'],
+      src: [
+        'src/assets/toolkit/images/**/*',
+        '!src/assets/toolkit/images/**/*.svg',
+        'src/favicon.ico',
+      ],
       dest: 'dist/assets/toolkit/images',
-      watch: 'src/assets/toolkit/images/**/*',
+      watch: [
+        'src/assets/toolkit/images/**/*',
+        '!src/assets/toolkit/images/**/*.svg',
+        'src/favicon.ico',
+      ],
+    },
+  },
+  svg: {
+    toolkit: {
+      src: 'src/assets/toolkit/images/**/*.svg',
+      dest: 'dist/assets/toolkit/images',
+      watch: ['src/assets/toolkit/images/**/*.svg'],
     },
   },
   sprites: {
@@ -178,7 +193,23 @@ function imgMinification() {
     .pipe(imagemin())
     .pipe(gulp.dest(config.images.toolkit.dest));
 }
-const images = gulp.series(imgFavicon, imgMinification);
+function svgMinification() {
+  return gulp
+    .src(config.svg.toolkit.src)
+    .pipe(
+      imagemin([
+        imagemin.svgo({
+          plugins: [
+            {
+              removeViewBox: false,
+            },
+          ],
+        }),
+      ])
+    )
+    .pipe(gulp.dest(config.svg.toolkit.dest));
+}
+const images = gulp.series(imgFavicon, imgMinification, svgMinification);
 
 // sprites
 function buildSprites() {
