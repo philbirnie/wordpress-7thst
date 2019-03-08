@@ -1,14 +1,21 @@
 /**
  * Toolkit JavaScript
  */
-require('es6-promise').polyfill();
-require('custom-event-polyfill'); // Adds CustomEvent support to IE
-require('picturefill');
-require('focus-visible'); // Polyfill for `:focus-visible`
+import 'custom-event-polyfill'; // Adds CustomEvent support to IE
+import Promise from 'es6-promise';
+import SmoothScroll from 'smooth-scroll';
+import 'picturefill';
+import 'focus-visible'; // Polyfill for `:focus-visible`
 
-const SmoothScroll = require('smooth-scroll');
-
-const smoothScroll = new SmoothScroll('a[href*="#"]'); /* eslint-disable-line */
+// Initialize smooth scrolling
+const anchors = document.querySelectorAll('[href*="#"]');
+for (let i = 0, len = anchors.length; i < len; i++) {
+  anchors[i].setAttribute('data-scroll', true);
+}
+const smoothScroll = new SmoothScroll('[data-scroll]', {
+  durationMax: 3000,
+  easing: 'easeInOutQuint',
+});
 
 const $ = require('jquery');
 const boomsvgloader = require('boomsvgloader');
