@@ -10,18 +10,28 @@ OBJECTS / #MEDIA
  * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
  *
  */
+
 .o-media {
-    @include clearfix();
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+
+    &__img, &__body {
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
+    &__img {
+        margin-right: $global-spacing-unit;
+    }
+
+    &__body {
+        overflow: hidden;
+    }
 }
 
-.o-media__body {
-    overflow: hidden;
-}
-
-.o-media__img {
-    margin-right: $global-spacing-unit;
-    float: left;
-}
 
 /**
  * Modifiers
@@ -41,30 +51,13 @@ OBJECTS / #MEDIA
     }
 }
 
-// No spacing between media items.
-.o-media--flush {
-    > .o-media__img {
-        margin-right: 0;
-    }
-}
-
-// Stack elements on small screens
-.o-media--stacked\@sm {
-    > .o-media__img {
-        @include mq($from: 0px, $until: width-md) {
-            margin-bottom: $global-spacing-unit;
-            float: none;
-        }
-    }
-}
-
-
 // Swap the image and body around.
 .o-media--reverse {
+    flex-direction: row-reverse;
+    
     > .o-media__img {
         margin-right: 0;
         margin-left: $global-spacing-unit;
-        float: right;
         
         // Adjust our previously defined modifiers to work in reverse.
         .o-media--narrow & {
@@ -77,6 +70,26 @@ OBJECTS / #MEDIA
         
         .o-media--flush & {
             margin-left: 0;
+        }
+    }
+}
+
+.o-media--wide.o-media--reverse {
+    > .o-media__img {
+        margin-left: $global-spacing-unit-large;
+    }
+}
+
+// Stack elements on small screens
+.o-media--stacked\@sm {
+    @include mq($from: 0px, $until: width-md) {
+        flex-direction: column;
+        
+        &, &.o-media--reverse {
+            > .o-media__img {
+                align-self: center;
+                margin: 0 0 $global-spacing-unit;
+            }
         }
     }
 }

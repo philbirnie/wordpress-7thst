@@ -28,7 +28,7 @@
 @import 'utilities/utilities';
 
 
-body#tinymce.wp-editor {
+body#tinymce.wp-editor { /* stylelint-disable-line */
     color: $color-base;
     font-size: ($base-font-size / 16px) * 1em;
     -webkit-text-size-adjust: 100%;
