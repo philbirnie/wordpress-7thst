@@ -57,6 +57,13 @@
     }
 }
 
+// No Space: No margin between items
+.c-list--no-space {
+    & > li + li {
+        margin-top: 0;
+    }
+}
+
 // Inline - Horizontal list
 .c-list--inline {
     flex-direction: row;
