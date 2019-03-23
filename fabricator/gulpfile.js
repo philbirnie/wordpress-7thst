@@ -13,7 +13,7 @@ const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const stylelint = require('gulp-stylelint');
-const svgstore = require('gulp-svgstore');
+const svgSprite = require('gulp-svg-sprite');
 const svgmin = require('gulp-svgmin');
 const webpack = require('webpack');
 const browsers = require('./package.json');
@@ -193,6 +193,7 @@ function imgMinification() {
     .pipe(imagemin())
     .pipe(gulp.dest(config.images.toolkit.dest));
 }
+
 function svgMinification() {
   return gulp
     .src(config.svg.toolkit.src)
@@ -214,21 +215,18 @@ const images = gulp.series(imgFavicon, imgMinification, svgMinification);
 // sprites
 function buildSprites() {
   return gulp
-    .src(config.sprites.toolkit.src)
+    .src(config.sprites.toolkit.src, {
+      cwd: '',
+    })
     .pipe(
-      svgstore({
-        inlineSvg: true,
-        parserOptions: { xmlMode: true },
-      })
-    )
-    .pipe(
-      svgmin({
-        plugins: [
-          {
-            cleanupIDs: false,
-            removeViewBox: false,
+      svgSprite({
+        mode: {
+          symbol: {
+            dest: '',
+            sprite: 'sprites.svg',
+            example: false,
           },
-        ],
+        },
       })
     )
     .pipe(gulp.dest(config.sprites.toolkit.dest));
@@ -362,32 +360,51 @@ function serve(done) {
 function watch() {
   gulp.watch(
     config.templates.watch,
-    { interval: 500 },
+    {
+      interval: 500,
+    },
     gulp.series(assembler, reload)
   );
   gulp.watch(
     [config.scripts.fabricator.watch, config.scripts.toolkit.watch],
-    { interval: 500 },
+    {
+      interval: 500,
+    },
     gulp.series(scripts, reload)
   );
   gulp.watch(
     config.images.toolkit.watch,
-    { interval: 500 },
+    {
+      interval: 500,
+    },
+    gulp.series(images, reload)
+  );
+  gulp.watch(
+    config.svg.toolkit.watch,
+    {
+      interval: 500,
+    },
     gulp.series(images, reload)
   );
   gulp.watch(
     config.copy.toolkit.watch,
-    { interval: 500 },
+    {
+      interval: 500,
+    },
     gulp.series(copy, reload)
   );
   gulp.watch(
     config.sprites.toolkit.watch,
-    { interval: 500 },
+    {
+      interval: 500,
+    },
     gulp.series(sprites, reload)
   );
   gulp.watch(
     [config.styles.fabricator.watch, config.styles.toolkit.watch],
-    { interval: 250 },
+    {
+      interval: 250,
+    },
     gulp.series(styles)
   );
 }
