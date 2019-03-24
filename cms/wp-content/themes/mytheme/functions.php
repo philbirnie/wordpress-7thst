@@ -2,9 +2,9 @@
 /**
  * Functions
  *
- * @package Fairfield Homes
- * @subpackage Fairfield Homes
- * @since 2018 Sep
+ * @package 7th Street Web Starter
+ * @subpackage 7th Street Web Starter
+ * @since 2019 Mar
  */
 
 /**
