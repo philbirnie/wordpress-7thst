@@ -14,7 +14,6 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const stylelint = require('gulp-stylelint');
 const svgSprite = require('gulp-svg-sprite');
-const svgmin = require('gulp-svgmin');
 const webpack = require('webpack');
 const browsers = require('./package.json');
 sass.compiler = require('node-sass');
@@ -338,7 +337,6 @@ function assembler(done) {
         return +a % +b;
       },
       setVariable: require('./helpers/setVariable.js'),
-      ifEval: require('./helpers/ifEval'),
       forLoop: require('./helpers/forLoop'),
     },
   });
