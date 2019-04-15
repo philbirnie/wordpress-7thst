@@ -1,0 +1,52 @@
+/**
+ * Dynamnically creates spacing utilities
+ *
+ * @param  String               $property       Width of arrow
+ * @param  String               $abbreviation   Fill color of arrow (hex, rgba, hsa)
+ * @param  String               $prefix         Selector prefix.
+ * @param  Number               $multiplier     Modified size.
+ * @param  CSS Spacing Value    $spacing        Valid CSS value with unit (px, em, rem, vw, etc.)
+ * 
+ * @return Returns set up CSS properties.
+ */
+
+@mixin generateUnits($property: margin, $abbreviation: 'm', $prefix: '', $multiplier: 1, $spacing: $base-spacing-unit) {
+    $property-direction: (t: top, r: right, b: bottom, l: left, a: all);
+    
+    @if $prefix != '' {
+        $prefix: $prefix + '-';
+    }
+    
+    $modifier: '';
+    @if $multiplier and $multiplier != 1 {
+        $modifier: -#{$multiplier}x;
+    }
+
+    $cssValue: $spacing * $multiplier;
+
+    @each $key, $value in $property-direction {
+
+        @if $multiplier == 1 {
+            .#{$prefix}#{$abbreviation}-#{$key}-0 {
+                @if $value == 'all' {
+                    #{$property}-top: 0;
+                    #{$property}-right: 0;
+                    #{$property}-bottom: 0;
+                    #{$property}-left: 0;
+                } @else {
+                    #{$property}-#{$value}: 0;
+                }
+            }
+        }
+        .#{$prefix}#{$abbreviation}-#{$key}#{$modifier} {
+            @if $value == 'all' {
+                #{$property}-top: $cssValue;
+                #{$property}-right: $cssValue;
+                #{$property}-bottom: $cssValue;
+                #{$property}-left: $cssValue;
+            } @else {
+                #{$property}-#{$value}: $cssValue;
+            }
+        }
+    }
+}

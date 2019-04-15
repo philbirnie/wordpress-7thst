@@ -54,94 +54,15 @@
     border: 0;
 }
 
-
 /* Layout */
 
 // Margins
-.u-margin-none {
-    margin: 0 !important;
-}
-
-.u-margin-top {
-    margin-top: rem($base-spacing-unit);
-}
-
-.u-margin-top-2x {
-    margin-top: rem($base-spacing-unit * 2);
-}
-
-.u-margin-top-2x\@lg {
-    @include mq(width-lg) {
-        margin-top: rem($base-spacing-unit * 2);
-    }
-}
-
-.u-margin-top-4x\@lg {
-    @include mq(width-lg) {
-        margin-top: rem($base-spacing-unit * 4);
-    }
-}
-
-.u-margin-top-pull {
-    margin-top: rem(-$base-spacing-unit);
-}
-
-.u-margin-top-pull-2x\@lg {
-    @include mq(width-lg) {
-        margin-top: rem(-$base-spacing-unit * 2);
-    }
-}
-
-.u-margin-bottom-1\/2 {
-    margin-bottom: rem($base-spacing-unit / 2);
-}
-
-.u-margin-bottom {
-    margin-bottom: rem($base-spacing-unit);
-}
-
-.u-margin-bottom-2x {
-    margin-bottom: rem($base-spacing-unit * 2);
-}
-
-.u-margin-bottom-2x\@lg {
-    @include mq(width-lg) {
-        margin-bottom: rem($base-spacing-unit * 2);
-    }
-}
-
-.u-margin-bottom-4x {
-    margin-bottom: rem($base-spacing-unit * 4);
-}
-
-.u-margin-bottom-4x\@lg {
-    @include mq(width-lg) {
-        margin-bottom: rem($base-spacing-unit * 4);
-    }
-}
-
-.u-margin-bottom-pull {
-    margin-bottom: rem(-$base-spacing-unit);
-}
-
-.u-margin-bottom-pull-2x\@lg {
-    @include mq(width-lg) {
-        margin-bottom: rem(-$base-spacing-unit * 2);
-    }
-}
-
-.u-margin-bottom-none {
-    margin-bottom: 0;
-}
-
-.u-margin-left-1\/2 {
-    margin-left: rem($base-spacing-unit / 2)
-}
+@include generateUnits(margin, 'm', 'u');
+@include generateUnits(margin, 'm', 'u', 2);
 
 // Padding
-.u-padding-bottom-none {
-    padding-bottom: 0;
-}
+@include generateUnits(padding, 'p', 'u');
+
 
 /* Layout / Positioning */
 .u-float-right {
