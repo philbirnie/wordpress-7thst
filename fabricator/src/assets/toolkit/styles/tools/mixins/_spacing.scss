@@ -27,7 +27,7 @@
     @each $key, $value in $property-direction {
 
         @if $multiplier == 1 {
-            .#{$prefix}#{$abbreviation}-#{$key}-0 {
+            .#{$prefix}#{$abbreviation}-#{$key}-none {
                 @if $value == 'all' {
                     #{$property}-top: 0;
                     #{$property}-right: 0;
