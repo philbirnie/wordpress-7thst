@@ -10,6 +10,7 @@ const log = require('fancy-log');
 const imagemin = require('gulp-imagemin');
 const prefix = require('gulp-autoprefixer');
 const rename = require('gulp-rename');
+const replace = require('gulp-string-replace');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const stylelint = require('gulp-stylelint');
@@ -151,12 +152,10 @@ function stylesToolkit() {
 function lintStyles() {
   return gulp.src(config.styles.toolkitLint.src).pipe(
     stylelint({
-      reporters: [
-        {
-          formatter: 'string',
-          console: true,
-        },
-      ],
+      reporters: [{
+        formatter: 'string',
+        console: true,
+      }, ],
     })
   );
 }
@@ -199,11 +198,9 @@ function svgMinification() {
     .pipe(
       imagemin([
         imagemin.svgo({
-          plugins: [
-            {
-              removeViewBox: false,
-            },
-          ],
+          plugins: [{
+            removeViewBox: false,
+          }, ],
         }),
       ])
     )
@@ -217,6 +214,8 @@ function buildSprites() {
     .src(config.sprites.toolkit.src, {
       cwd: '',
     })
+    .pipe(replace('#000000', 'currentColor'))
+    .pipe(replace('#000', 'currentColor'))
     .pipe(
       svgSprite({
         mode: {
@@ -357,50 +356,43 @@ function serve(done) {
 
 function watch() {
   gulp.watch(
-    config.templates.watch,
-    {
+    config.templates.watch, {
       interval: 500,
     },
     gulp.series(assembler, reload)
   );
   gulp.watch(
-    [config.scripts.fabricator.watch, config.scripts.toolkit.watch],
-    {
+    [config.scripts.fabricator.watch, config.scripts.toolkit.watch], {
       interval: 500,
     },
     gulp.series(scripts, reload)
   );
   gulp.watch(
-    config.images.toolkit.watch,
-    {
+    config.images.toolkit.watch, {
       interval: 500,
     },
     gulp.series(images, reload)
   );
   gulp.watch(
-    config.svg.toolkit.watch,
-    {
+    config.svg.toolkit.watch, {
       interval: 500,
     },
     gulp.series(images, reload)
   );
   gulp.watch(
-    config.copy.toolkit.watch,
-    {
+    config.copy.toolkit.watch, {
       interval: 500,
     },
     gulp.series(copy, reload)
   );
   gulp.watch(
-    config.sprites.toolkit.watch,
-    {
+    config.sprites.toolkit.watch, {
       interval: 500,
     },
     gulp.series(sprites, reload)
   );
   gulp.watch(
-    [config.styles.fabricator.watch, config.styles.toolkit.watch],
-    {
+    [config.styles.fabricator.watch, config.styles.toolkit.watch], {
       interval: 250,
     },
     gulp.series(styles)
