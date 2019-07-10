@@ -20,6 +20,9 @@ require_once 'inc/media.php';
 require_once 'inc/posts.php';
 require_once 'inc/utilities.php';
 
+// Enables automatic updates on some hosts
+add_filter( 'automatic_updates_is_vcs_checkout', '__return_false', 1 );
+
 /**
  * |------------------------------------------------------------------------
  * | Add Options Page ACF
