@@ -18,7 +18,7 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> data-sprites="<?php echo get_template_directory_uri(); ?>/assets/images/sprites.svg">
+<body <?php body_class(); ?> data-sprites="<?php echo get_template_directory_uri(); ?>/assets/images/sprites.svg?ver=<?php echo esc_attr( wp_get_theme()->get( 'Version' ) ); ?>">
 
     <?php get_template_part('partials/materials/modules/head'); ?>
 
