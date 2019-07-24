@@ -5,34 +5,37 @@ fabricator: true
 
 <h1>Overview</h1>
 
-<p>This UI toolkit is a highly-modular design system for rapid web page development. It contains different materials that can be assembled into more complex page layouts.</p>
+<div class="f-item-group text-component">
+	<p>This UI toolkit is a highly-modular design system for rapid web page development. It contains different materials that can be assembled into more complex page layouts.</p>
 
-<p>This guide contains real working examples, code snippets, documentation, and style guidelines.</p>
+	<p>This guide contains real working examples, code snippets, documentation, and style guidelines.</p>
 
-<h2>Usage</h2>
+	<h2>Usage</h2>
 
-<p>Start by adding the following files to your page:</p>
+	<p>Start by adding the following files to your page:</p>
 
-<pre class="language-markup"><code class="language-markup">&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/toolkit/styles/toolkit.css&quot;&gt;</code></pre>
+	<pre class="language-markup"><code class="language-markup">&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/toolkit/styles/toolkit.css&quot;&gt;</code></pre>
 
-<pre class="language-markup"><code class="language-markup">&lt;script src=&quot;assets/toolkit/scripts/toolkit.js&quot;&gt;&lt;/script&gt;</code></pre>
+	<pre class="language-markup"><code class="language-markup">&lt;script src=&quot;assets/toolkit/scripts/toolkit.js&quot;&gt;&lt;/script&gt;</code></pre>
 
 
-<h2>Color</h2>
+	<h2 style="margin-bottom: 0.75em;">Color</h2>
 
-{{#each toolkit.colors}}
-	<div class="f-color-chips">
-	{{#each this}}
-		<div class="f-color-chip">
-			<div class="f-color-chip__name">{{@key}}</div>
-			<div class="f-color-chip__color">{{this}}</div>
+	{{#each toolkit.colors}}
+		<h4>{{@key}}</h4>
+		<div class="f-color-chips">
+		{{#each this}}
+			<div class="f-color-chip">
+				<div class="f-color-chip__name">{{@key}}</div>
+				<div class="f-color-chip__color">{{this}}</div>
+			</div>
+		{{/each}}
 		</div>
 	{{/each}}
-	</div>
-{{/each}}
 
-<h2>Typography</h2>
+	<h2>Typography</h2>
 
-<p>This is body text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dapibus vulputate diam eu pretium. Mauris elit orci, ultricies id fermentum vel, porta et eros. Vestibulum condimentum lectus in convallis feugiat. Sed vulputate fringilla felis. Aliquam ut arcu et dui feugiat scelerisque eu quis diam. Mauris placerat congue dui sit amet blandit. Phasellus condimentum libero vel velit auctor, sit amet tincidunt velit varius.</p>
-<p>Mauris lacinia porta faucibus. Fusce eu est ac eros vulputate mollis in ac felis. Aenean commodo scelerisque mi sed imperdiet. Donec at hendrerit nisi, eget vestibulum nisi. Sed sit amet magna luctus, facilisis erat quis, sagittis ligula. Aenean dignissim velit quis leo consequat ultricies. Proin quis pretium justo. Vestibulum at eros nisl. Fusce lobortis erat ante, eu cursus sapien molestie at. Pellentesque placerat ante diam, et euismod lacus dictum vel. Phasellus vitae sollicitudin mi.</p>
-<p>In pulvinar eleifend convallis. Suspendisse elit erat, venenatis eget ullamcorper ut, laoreet iaculis nisl. Sed porta, felis id rhoncus aliquet, quam ipsum pellentesque metus, in sodales quam nunc vitae risus. Quisque in venenatis massa. Phasellus neque risus, ornare quis nisl ultricies, ullamcorper consectetur orci. Suspendisse rhoncus orci odio, id faucibus ipsum tincidunt nec. Ut eget ante sit amet justo volutpat convallis vitae et augue. Phasellus sagittis cursus fermentum.</p>
+	<p>This is body text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras dapibus vulputate diam eu pretium. Mauris elit orci, ultricies id fermentum vel, porta et eros. Vestibulum condimentum lectus in convallis feugiat. Sed vulputate fringilla felis. Aliquam ut arcu et dui feugiat scelerisque eu quis diam. Mauris placerat congue dui sit amet blandit. Phasellus condimentum libero vel velit auctor, sit amet tincidunt velit varius.</p>
+	<p>Mauris lacinia porta faucibus. Fusce eu est ac eros vulputate mollis in ac felis. Aenean commodo scelerisque mi sed imperdiet. Donec at hendrerit nisi, eget vestibulum nisi. Sed sit amet magna luctus, facilisis erat quis, sagittis ligula. Aenean dignissim velit quis leo consequat ultricies. Proin quis pretium justo. Vestibulum at eros nisl. Fusce lobortis erat ante, eu cursus sapien molestie at. Pellentesque placerat ante diam, et euismod lacus dictum vel. Phasellus vitae sollicitudin mi.</p>
+	<p>In pulvinar eleifend convallis. Suspendisse elit erat, venenatis eget ullamcorper ut, laoreet iaculis nisl. Sed porta, felis id rhoncus aliquet, quam ipsum pellentesque metus, in sodales quam nunc vitae risus. Quisque in venenatis massa. Phasellus neque risus, ornare quis nisl ultricies, ullamcorper consectetur orci. Suspendisse rhoncus orci odio, id faucibus ipsum tincidunt nec. Ut eget ante sit amet justo volutpat convallis vitae et augue. Phasellus sagittis cursus fermentum.</p>
+</div>
