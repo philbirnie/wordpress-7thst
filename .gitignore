@@ -5,6 +5,7 @@
 !/cms/wp-content/themes
 /cms/wp-content/themes/*
 !/cms/wp-content/themes/mytheme
+cms/wp-content/themes/mytheme/vendor
 !/cms/plugins.sh
 !/cms/plugins.conf
 
