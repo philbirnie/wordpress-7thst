@@ -22,7 +22,7 @@ if ( function_exists( 'fly_add_image_size' ) ) {
 	// fly_add_image_size( 'hero_mobile', 1024, 400, true );
 	// fly_add_image_size( 'hero_mobile_2x', 2048, 800, true );
 	// fly_add_image_size( 'hero', 1920, 675, true );
-	// fly_add_image_size( 'hero_2x', 3840, 1350, true );	
+	// fly_add_image_size( 'hero_2x', 3840, 1350, true );
 }
 
 
@@ -33,12 +33,33 @@ if ( function_exists( 'fly_add_image_size' ) ) {
 // 	add_image_size( 'story_thumb', 275, 155, array('right', 'center'));
 // }
 
-// Get SVG icon
-function get_icon($id, $title = '', $class = '') {
-	$icon = '<svg class="c-icon '. $class .'" pointer-events="none">
-		<title>'. $title .'</title>
-		<use xlink:href="#'. $id .'"></use>
+/**
+ * Gets SVG Icon HTML
+ *
+ * @param string $svg_id SVG Slug.
+ * @param string $title  Fallback Title.
+ * @param string $class  Optional Class.
+ *
+ * @return string
+ */
+function ssw_get_icon( $svg_id, $title = '', $class = '' ): string {
+	$icon = '<svg class="c-icon ' . $class . '" pointer-events="none">
+		<title>' . $title . '</title>
+		<use xlink:href="#' . $svg_id . '"></use>
 	</svg>';
 
 	return $icon;
+}
+
+/**
+ * Get The Icon
+ *
+ * @param string $svg_id SVG Id.
+ * @param string $title  Fallback Title.
+ * @param string $class  Optional Class Name.
+ */
+function ssw_the_icon( $svg_id, $title = '', $class = '' ) {
+	// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo ssw_get_icon( $svg_id, $title, $class );
+	//phpcs:enable
 }
