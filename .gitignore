@@ -37,4 +37,4 @@ fabricator/src/materials/components/icons.html
 
 # VS Code
 /.vscode
-!/.vscode/chop5.code-workspace
+!/.vscode/*.code-workspace
