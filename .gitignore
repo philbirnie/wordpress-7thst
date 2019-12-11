@@ -34,3 +34,7 @@ fabricator/src/materials/components/icons.html
 # Jetbrains
 .idea/workspace.xml
 .idea/tasks.xml
+
+# VS Code
+/.vscode
+!/.vscode/chop5.code-workspace
