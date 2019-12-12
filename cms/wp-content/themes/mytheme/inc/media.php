@@ -1,37 +1,38 @@
 <?php
+/**
+ * Media
+ *
+ * @package    Seventh Street Web
+ * @subpackage Seventh Street Web
+ * @since      2019 Dec
+ */
 
-/*
-|--------------------------------------------------------------------------
-| Media
-|--------------------------------------------------------------------------
-|
-|
-*/
-
-/** Global JPEG compression settings */
-add_filter('jpeg_quality', function($arg){ return 85; });
+/**
+ * Global Compression Settings
+ */
+add_filter(
+	'jpeg_quality',
+	function () {
+		return 85;
+	}
+);
 
 if ( function_exists( 'add_theme_support' ) ) {
-	add_theme_support( 'post-thumbnails' ); // The important part
+	add_theme_support( 'post-thumbnails' );
 }
 
-
-/** Fly Image sizes */
-if ( function_exists( 'fly_add_image_size' ) ) {
-	// Hero
-	// fly_add_image_size( 'hero_mobile', 1024, 400, true );
-	// fly_add_image_size( 'hero_mobile_2x', 2048, 800, true );
-	// fly_add_image_size( 'hero', 1920, 675, true );
-	// fly_add_image_size( 'hero_2x', 3840, 1350, true );
+/**
+ * Increases Threshold on maximum size of image
+ *
+ * @return int
+ */
+function ssw_increase_threshold() {
+	return 3000;
 }
 
+/** Increase scaling size */
+add_filter( 'big_image_size_threshold', 'ssw_increase_threshold', 10, 0 );
 
-/** Modify Sizes */
-//update_option( 'large_w', 1200);
-
-// if ( function_exists( 'add_image_size' ) ) {
-// 	add_image_size( 'story_thumb', 275, 155, array('right', 'center'));
-// }
 
 /**
  * Gets SVG Icon HTML
@@ -43,7 +44,7 @@ if ( function_exists( 'fly_add_image_size' ) ) {
  * @return string
  */
 function ssw_get_icon( $svg_id, $title = '', $class = '' ): string {
-	$icon = '<svg class="c-icon ' . $class . '" pointer-events="none">
+	$icon = '<svg class="c-icon ' . $class . '" pointer-events="none" focusable="false">
 		<title>' . $title . '</title>
 		<use xlink:href="#' . $svg_id . '"></use>
 	</svg>';
