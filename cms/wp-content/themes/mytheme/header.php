@@ -6,7 +6,7 @@
  * @subpackage My Theme
  */
 ?><!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
+<html <?php language_attributes(); ?>>
 <head>
 	<?php get_template_part( 'template-parts/materials/utility/font-hinting' ); ?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
