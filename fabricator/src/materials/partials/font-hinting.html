@@ -1,0 +1,6 @@
+{{#if toolkit.fonts}}
+<!-- Font resource hints -->
+{{#each toolkit.fonts}}
+<link rel="preload" as="font" type="{{type}}" href="{{baseurl}}/{{url}}" crossorigin>
+{{/each}}
+{{/if}}

@@ -8,3 +8,8 @@ colors:
         $color-black:           "#000000"
         $color-gray:            "#CBD1DB"
         $color-white:           "#FFFFFF"
+
+fonts: 
+    -
+        url: assets/toolkit/fonts/my-font.woff2
+        type: font/woff2 
